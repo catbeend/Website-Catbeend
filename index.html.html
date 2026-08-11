@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catbeend Digital Advertising — Pasang Stiker & Kaca Film</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FBF3EE;
+    --surface:#FFFFFF;
+    --surface-2:#FDEAE0;
+    --amber:#D9707F;
+    --teal:#4FA895;
+    --wa-green:#25D366;
+    --wa-green-dark:#1EBE5A;
+    --text:#423241;
+    --text-dim:#8C7A87;
+    --line:#F1DED8;
+    --radius:14px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3{
+    font-family:'Space Grotesk', sans-serif;
+    line-height:1.15;
+    letter-spacing:-0.01em;
+  }
+
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  img,svg{display:block;max-width:100%;}
+
+  .container{
+    max-width:640px;
+    margin:0 auto;
+    padding:0 20px;
+  }
+
+  /* ===== perforated cut-line divider (signature element) ===== */
+  .cutline{
+    width:100%;
+    height:14px;
+    position:relative;
+    background:
+      repeating-linear-gradient(
+        90deg,
+        var(--amber) 0 10px,
+        transparent 10px 22px
+      );
+    opacity:0.9;
+    -webkit-mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
+    mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
+  }
+  .cutline::before,.cutline::after{
+    content:"✂";
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%) rotate(90deg);
+    font-size:14px;
+    color:var(--amber);
+  }
+  .cutline::before{left:12px;}
+  .cutline::after{right:12px;}
+
+  /* ===== header ===== */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(251,243,238,0.85);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .header-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 20px;
+    max-width:640px;
+    margin:0 auto;
+  }
+  .logo{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:17px;
+    letter-spacing:-0.01em;
+  }
+  .logo span{color:var(--amber);}
+  .btn-wa-mini{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    background:var(--wa-green);
+    color:#0B1F14;
+    font-weight:700;
+    font-size:13px;
+    padding:9px 14px;
+    border-radius:999px;
+    white-space:nowrap;
+  }
+
+  /* ===== hero ===== */
+  .hero{
+    padding:36px 20px 28px;
+    position:relative;
+    background:
+      radial-gradient(circle at 15% 0%, rgba(217,112,127,0.14), transparent 45%),
+      radial-gradient(circle at 100% 20%, rgba(79,168,149,0.12), transparent 40%);
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--surface);
+    border:1px solid var(--line);
+    color:var(--teal);
+    font-size:12.5px;
+    font-weight:600;
+    padding:6px 12px;
+    border-radius:999px;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(30px, 8vw, 42px);
+    font-weight:700;
+    margin-bottom:14px;
+  }
+  .hero h1 .hl{color:var(--amber);}
+  .hero p.lead{
+    color:var(--text-dim);
+    font-size:16px;
+    max-width:46ch;
+    margin-bottom:26px;
+  }
+
+  .btn-wa{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    background:var(--wa-green);
+    color:#0B1F14;
+    font-weight:700;
+    font-size:16.5px;
+    padding:17px 22px;
+    border-radius:var(--radius);
+    box-shadow:0 8px 24px -6px rgba(37,211,102,0.45);
+    border:none;
+    width:100%;
+    cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .btn-wa:hover, .btn-wa:focus-visible{
+    background:var(--wa-green-dark);
+    transform:translateY(-1px);
+    box-shadow:0 12px 28px -6px rgba(37,211,102,0.55);
+    outline:2px solid var(--teal);
+    outline-offset:3px;
+  }
+  .btn-wa svg{flex-shrink:0;}
+  .cta-note{
+    text-align:center;
+    color:var(--text-dim);
+    font-size:12.5px;
+    margin-top:10px;
+  }
+
+  /* ===== sections ===== */
+  section.block{padding:44px 20px;}
+  .section-head{margin-bottom:24px;}
+  .section-tag{
+    color:var(--amber);
+    font-size:12.5px;
+    font-weight:700;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    display:block;
+    margin-bottom:8px;
+  }
+  .section-head h2{
+    font-size:clamp(22px, 6vw, 28px);
+    font-weight:700;
+  }
+
+  /* alasan pilih kami */
+  .reasons{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
+  .reason-card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:16px 14px;
+  }
+  .reason-card .emoji{font-size:22px;display:block;margin-bottom:8px;}
+  .reason-card h3{font-size:14.5px;font-weight:700;margin-bottom:3px;}
+  .reason-card p{font-size:12.5px;color:var(--text-dim);}
+
+  /* layanan */
+  .services{display:flex;flex-direction:column;gap:12px;}
+  .service-card{
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:16px;
+  }
+  .service-card .emoji{
+    font-size:24px;
+    background:var(--surface-2);
+    border-radius:10px;
+    width:44px;height:44px;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .service-card h3{font-size:15.5px;font-weight:700;margin-bottom:4px;}
+  .service-card p{font-size:13.5px;color:var(--text-dim);}
+
+  /* cara pesan */
+  .steps{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    position:relative;
+  }
+  .step{
+    display:flex;
+    gap:16px;
+    padding-bottom:26px;
+    position:relative;
+  }
+  .step:last-child{padding-bottom:0;}
+  .step-num{
+    flex-shrink:0;
+    width:34px;height:34px;
+    border-radius:50%;
+    background:var(--surface-2);
+    border:1px solid var(--amber);
+    color:var(--amber);
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:14px;
+    display:flex;align-items:center;justify-content:center;
+    position:relative;
+    z-index:2;
+  }
+  .step:not(:last-child)::before{
+    content:"";
+    position:absolute;
+    left:17px;
+    top:34px;
+    width:1px;
+    height:calc(100% - 34px);
+    background:var(--line);
+  }
+  .step-body h3{font-size:15px;font-weight:700;margin-bottom:3px;padding-top:6px;}
+  .step-body p{font-size:13.5px;color:var(--text-dim);}
+
+  /* portofolio slider */
+  .portfolio-scroll{
+    display:flex;
+    gap:14px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    padding:4px 20px 10px;
+    scrollbar-width:none;
+  }
+  .portfolio-scroll::-webkit-scrollbar{display:none;}
+  .portfolio-card{
+    flex:0 0 72%;
+    scroll-snap-align:start;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .portfolio-img{
+    height:150px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+  }
+  .portfolio-img span{font-size:40px;position:relative;z-index:2;}
+  .portfolio-img::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:repeating-linear-gradient(135deg, rgba(255,255,255,0.55) 0 8px, transparent 8px 20px);
+  }
+  .pf-1{background:linear-gradient(135deg,#FFE3D6,#FFD1C2);}
+  .pf-2{background:linear-gradient(135deg,#FFF3C7,#FFE7A8);}
+  .pf-3{background:linear-gradient(135deg,#D8F5E9,#B9EAD4);}
+  .pf-4{background:linear-gradient(135deg,#E6DFFB,#D3C4F5);}
+  .pf-5{background:linear-gradient(135deg,#FFE0EC,#FFC7DC);}
+  .portfolio-info{padding:14px 16px;}
+  .portfolio-info h3{font-size:14.5px;font-weight:700;margin-bottom:4px;}
+  .portfolio-info p{font-size:12.5px;color:var(--text-dim);}
+  .portfolio-hint{
+    font-size:12.5px;
+    color:var(--text-dim);
+    margin-top:2px;
+  }
+
+  @media (min-width:560px){
+    .portfolio-card{flex-basis:44%;}
+  }
+
+  /* CTA kedua */
+  .cta-block{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:30px 22px;
+    text-align:center;
+    margin:0 20px;
+  }
+  .cta-block h2{font-size:22px;font-weight:700;margin-bottom:8px;}
+  .cta-block p{color:var(--text-dim);font-size:14px;margin-bottom:20px;}
+
+  /* footer */
+  footer{
+    padding:34px 20px 90px;
+    color:var(--text-dim);
+    font-size:13.5px;
+  }
+  footer .foot-logo{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    color:var(--text);
+    font-size:16px;
+    margin-bottom:10px;
+  }
+  footer .foot-logo span{color:var(--amber);}
+  footer .foot-row{
+    display:flex;
+    gap:10px;
+    margin-bottom:8px;
+    align-items:flex-start;
+  }
+  footer .foot-row .ic{flex-shrink:0;}
+  footer .copyright{
+    margin-top:22px;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+    font-size:12px;
+  }
+
+  /* floating WA button (muncul saat sudah scroll lewat hero) */
+  .fab-wa{
+    position:fixed;
+    right:18px;
+    bottom:18px;
+    z-index:60;
+    background:var(--wa-green);
+    width:56px;height:56px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 24px -6px rgba(37,211,102,0.55);
+    opacity:0;
+    transform:translateY(16px) scale(0.9);
+    pointer-events:none;
+    transition:opacity .25s ease, transform .25s ease;
+  }
+  .fab-wa.show{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease, transform .5s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1;transform:none;transition:none;}
+    .btn-wa,.fab-wa{transition:none;}
+  }
+
+  @media (min-width:560px){
+    .btn-wa{width:auto;padding:17px 34px;}
+    .hero-actions{display:flex;justify-content:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">Catbeend<span>.</span></div>
+    <a class="btn-wa-mini" href="https://wa.me/628999194761?text=Halo%20Catbeend%2C%20saya%20mau%20tanya%20soal%20pasang%20stiker%2Fkaca%20film" target="_blank" rel="noopener">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="#0B1F14"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.39c1.44.79 3.06 1.2 4.76 1.2h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.02c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.14-4.9-4.33-.14-.19-1.17-1.56-1.17-2.98s.75-2.11 1.02-2.4c.27-.29.58-.36.78-.36.19 0 .39 0 .55.01.18.01.42-.07.65.5.24.58.82 2 .89 2.14.07.14.12.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.14-.28.28-.12.55.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.14.43.11.58-.07.16-.18.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.27.13.44.19.51.3.07.11.07.63-.17 1.31z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow">📍 Melayani Jabodetabek dan sekitarnya</span>
+    <h1>Butuh Pasang <span class="hl">Stiker</span> atau <span class="hl">Kaca Film</span> Sekarang?</h1>
+    <p class="lead">Catbeend Digital Advertising siap kerjain — untuk rumah, tempat usaha, sampai kantor. Kerja cepat, rapi, dan harganya bersahabat.</p>
+    <div class="hero-actions">
+      <a class="btn-wa" href="https://wa.me/628999194761?text=Halo%20Catbeend%2C%20saya%20mau%20konsultasi%20dan%20pesan%20pemasangan%20stiker%2Fkaca%20film" target="_blank" rel="noopener">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#0B1F14"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.39c1.44.79 3.06 1.2 4.76 1.2h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.02c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.14-4.9-4.33-.14-.19-1.17-1.56-1.17-2.98s.75-2.11 1.02-2.4c.27-.29.58-.36.78-.36.19 0 .39 0 .55.01.18.01.42-.07.65.5.24.58.82 2 .89 2.14.07.14.12.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.14-.28.28-.12.55.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.14.43.11.58-.07.16-.18.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.27.13.44.19.51.3.07.11.07.63-.17 1.31z"/></svg>
+        Konsultasi via WhatsApp
+      </a>
+    </div>
+    <p class="cta-note">Respon cepat · Konsultasi gratis, tanpa menunggu lama</p>
+  </div>
+</section>
+
+<div class="cutline"></div>
+
+<section class="block reveal">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Kenapa pilih kami</span>
+      <h2>Alasan mengapa Anda dapat mempercayakan pekerjaan ini kepada kami</h2>
+    </div>
+    <div class="reasons">
+      <div class="reason-card">
+        <span class="emoji">⚡</span>
+        <h3>Cepat</h3>
+        <p>Tidak perlu menunggu lama, pengerjaan langsung dilaksanakan.</p>
+      </div>
+      <div class="reason-card">
+        <span class="emoji">🎯</span>
+        <h3>Tepat</h3>
+        <p>Ukuran & posisi presisi, sesuai kebutuhan Anda.</p>
+      </div>
+      <div class="reason-card">
+        <span class="emoji">✨</span>
+        <h3>Rapi</h3>
+        <p>Hasil akhir bersih, gak ada gelembung atau lipatan.</p>
+      </div>
+      <div class="reason-card">
+        <span class="emoji">💰</span>
+        <h3>Harga Kompetitif</h3>
+        <p>Kualitas bagus, harga tetap masuk akal.</p>
+      </div>
+      <div class="reason-card">
+        <span class="emoji">🏆</span>
+        <h3>Berpengalaman</h3>
+        <p>Udah terbiasa tangani berbagai jenis kebutuhan.</p>
+      </div>
+      <div class="reason-card">
+        <span class="emoji">🕐</span>
+        <h3>Support 24 Jam</h3>
+        <p>Mau tanya-tanya jam berapa aja, kami siap bales.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block reveal">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Layanan kami</span>
+      <h2>Satu tim untuk berbagai kebutuhan Anda</h2>
+    </div>
+    <div class="services">
+      <div class="service-card">
+        <span class="emoji">🏠</span>
+        <div>
+          <h3>Rumah</h3>
+          <p>Kaca film untuk privasi & sejuk ruangan, stiker dekorasi sesuai selera.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <span class="emoji">🏪</span>
+        <div>
+          <h3>Tempat Usaha</h3>
+          <p>Stiker branding toko, banner kaca, sampai kaca film etalase.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <span class="emoji">🏢</span>
+        <div>
+          <h3>Kantor</h3>
+          <p>Kaca film ruang kerja, stiker logo & signage profesional.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block reveal">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Portofolio</span>
+      <h2>Sebagian hasil kerjaan kami</h2>
+    </div>
+  </div>
+  <div class="portfolio-scroll">
+    <div class="portfolio-card">
+      <div class="portfolio-img pf-1"><span>🏢</span></div>
+      <div class="portfolio-info">
+        <h3>Kaca Film Kantor</h3>
+        <p>Pemasangan kaca film ruang kerja, Jakarta Barat</p>
+      </div>
+    </div>
+    <div class="portfolio-card">
+      <div class="portfolio-img pf-2"><span>🏪</span></div>
+      <div class="portfolio-info">
+        <h3>Stiker Branding Toko</h3>
+        <p>Stiker logo & signage untuk tempat usaha</p>
+      </div>
+    </div>
+    <div class="portfolio-card">
+      <div class="portfolio-img pf-3"><span>🏠</span></div>
+      <div class="portfolio-info">
+        <h3>Kaca Film Rumah</h3>
+        <p>Kaca film privasi & peredam panas untuk hunian</p>
+      </div>
+    </div>
+    <div class="portfolio-card">
+      <div class="portfolio-img pf-4"><span>🪟</span></div>
+      <div class="portfolio-info">
+        <h3>Stiker Kaca Etalase</h3>
+        <p>Stiker dekorasi & informasi untuk kaca depan toko</p>
+      </div>
+    </div>
+    <div class="portfolio-card">
+      <div class="portfolio-img pf-5"><span>🚪</span></div>
+      <div class="portfolio-info">
+        <h3>Kaca Film Ruko</h3>
+        <p>Pemasangan kaca film untuk bangunan ruko</p>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <p class="portfolio-hint">👉 Geser untuk melihat hasil kerjaan lainnya</p>
+  </div>
+</section>
+
+<section class="block reveal">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Cara pesan</span>
+      <h2>Tiga langkah yang praktis</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Chat WhatsApp</h3>
+          <p>Ceritakan kebutuhan Anda — mau pasang apa, di mana, kapan.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Konsultasi & Survei</h3>
+          <p>Kami membantu menentukan bahan & ukuran yang tepat, dan melakukan survei lokasi bila diperlukan.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Pengerjaan</h3>
+          <p>Tim kami kerjain langsung di lokasi, cepat dan rapi.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block reveal">
+  <div class="cta-block">
+    <h2>Sudah siap untuk memasang?</h2>
+    <p>Anda tinggal menghubungi kami, dan kami akan membantu mulai dari konsultasi hingga pekerjaan selesai.</p>
+    <a class="btn-wa" href="https://wa.me/628999194761?text=Halo%20Catbeend%2C%20saya%20mau%20konsultasi%20dan%20pesan%20pemasangan%20stiker%2Fkaca%20film" target="_blank" rel="noopener">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="#0B1F14"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.39c1.44.79 3.06 1.2 4.76 1.2h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.02c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.14-4.9-4.33-.14-.19-1.17-1.56-1.17-2.98s.75-2.11 1.02-2.4c.27-.29.58-.36.78-.36.19 0 .39 0 .55.01.18.01.42-.07.65.5.24.58.82 2 .89 2.14.07.14.12.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.14-.28.28-.12.55.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.14.43.11.58-.07.16-.18.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.27.13.44.19.51.3.07.11.07.63-.17 1.31z"/></svg>
+      Pesan Sekarang
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-logo">Catbeend<span>.</span> Digital Advertising</div>
+    <div class="foot-row">
+      <span class="ic">📞</span>
+      <a href="tel:+628999194761">0899-9194-761</a>
+    </div>
+    <div class="foot-row">
+      <span class="ic">📍</span>
+      <span>Jl. H. Jaani RT/RW 006/011, Kebon Jeruk, Jakarta Barat</span>
+    </div>
+    <div class="foot-row">
+      <span class="ic">🕐</span>
+      <span>Support tersedia 24 jam</span>
+    </div>
+    <div class="copyright">© 2026 Catbeend Digital Advertising. Semua hak dilindungi.</div>
+  </div>
+</footer>
+
+<a class="fab-wa" id="fabWa" href="https://wa.me/628999194761?text=Halo%20Catbeend%2C%20saya%20mau%20tanya%20soal%20pasang%20stiker%2Fkaca%20film" target="_blank" rel="noopener" aria-label="Chat WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="#0B1F14"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.39c1.44.79 3.06 1.2 4.76 1.2h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.02c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.14-4.9-4.33-.14-.19-1.17-1.56-1.17-2.98s.75-2.11 1.02-2.4c.27-.29.58-.36.78-.36.19 0 .39 0 .55.01.18.01.42-.07.65.5.24.58.82 2 .89 2.14.07.14.12.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.14-.28.28-.12.55.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.14.43.11.58-.07.16-.18.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.27.13.44.19.51.3.07.11.07.63-.17 1.31z"/></svg>
+</a>
+
+<script>
+  // Tombol WA melayang muncul setelah user scroll lewat bagian hero
+  const heroSection = document.querySelector('.hero');
+  const fab = document.getElementById('fabWa');
+  const io1 = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) {
+        fab.classList.add('show');
+      } else {
+        fab.classList.remove('show');
+      }
+    });
+  }, { threshold: 0.1 });
+  io1.observe(heroSection);
+
+  // Animasi reveal saat elemen masuk layar
+  const revealEls = document.querySelectorAll('.reveal');
+  const io2 = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io2.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io2.observe(el));
+</script>
+
+</body>
+</html>
